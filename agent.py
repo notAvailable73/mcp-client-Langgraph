@@ -49,19 +49,14 @@ async def run_agent():
                 "command": "npx",
                 "args": ["-y", "mcp-remote", "https://mcp.clickup.com/mcp"],
                 "transport": "stdio",
-            },
-            # "weather": {
-            # "url": "http://localhost:8000/sse", # start your weather server on port 8000
-            # "transport": "sse",
-            # }
+            }
         }
     )
 
     mcp_tools = await client.get_tools()
 
     # Combine MCP tools with custom tools
-    tools = mcp_tools + [get_present_date]
-
+    tools = mcp_tools 
     # Bind tools to the model
     model_with_tools = model.bind_tools(tools)
 
